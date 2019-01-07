@@ -3540,8 +3540,16 @@ __webpack_require__(207);
 
 __webpack_require__(209);
 
+// Variables
+
+var imperialUnits = "&units=imperial&appid=";
+var metricUnits = "&units=metric&appid=";
+
+// Handles
+
 var searchTxt = document.getElementById("search-txt");
 var searchBtn = document.getElementById("search-btn");
+var switchCheckbox = document.getElementById("switch-checkbox");
 var cityName = document.getElementById("weather-name");
 var weatherBox = document.getElementById("weather-box");
 var weatherDesc = document.getElementById("weather-description");
@@ -3553,6 +3561,7 @@ var weatherIcon = document.getElementById("icon");
 
 searchBtn.addEventListener("click", findWeatherDetails);
 searchTxt.addEventListener("keypress", enterPressed);
+switchCheckbox.addEventListener("click", changeUnits);
 
 function enterPressed(event) {
   if (event.keyCode == 13) {
@@ -3563,35 +3572,36 @@ function enterPressed(event) {
 
 function findWeatherDetails() {
   if (searchTxt.value === "") {} else {
-    getWeather();
+    getWeather(metricUnits);
+    switchCheckbox.checked = false;
   }
 }
 
-function getWeather() {
+function getWeather(units) {
   var appKey = "f817cddb3ec2d6eaae7099c1bbdf4596";
   var url = "https://api.openweathermap.org/data/2.5/weather?q=";
   var enteredValue = searchTxt.value == "" ? "Lodz" : searchTxt.value;
-  var quoteUrl = url + enteredValue + "&units=metric&appid=" + appKey;
+  var quoteUrl = url + enteredValue + units + appKey;
   fetch(quoteUrl, { cache: "no-store" }).then(function (response) {
     return response.json();
   }).then(function (response) {
-    showWeather(response), getImages(response), console.log(response);
+    showWeather(response), getBackground(response), console.log(response);
   });
 };
-getWeather();
+getWeather(metricUnits);
 
-function getImages(response) {
+function getBackground(response) {
   if (response.weather[0].icon.includes("n")) {
     weatherBox.classList.add('night');
-    document.body.classList.add("night-baskgroud");
+    document.body.classList.add('night-baskgroud');
   } else {
     weatherBox.classList.remove('night');
-    document.body.classList.remove("night-baskgroud");
+    document.body.classList.remove('night-baskgroud');
   }
 };
 
 function showWeather(response) {
-  weatherTemp.innerHTML = response.main.temp + '°';
+  weatherTemp.innerHTML = Math.round(response.main.temp) + '°';
   cityName.innerHTML = response.name + ", " + response.sys.country;
   weatherDesc.innerHTML = response.weather[0].description;
   weatherIcon.setAttribute("src", "./src/images/" + response.weather[0].icon + ".png");
@@ -3599,6 +3609,10 @@ function showWeather(response) {
   weatherPressure.innerText = response.main.pressure + ' hpa';
   weatherHumidity.innerText = response.main.humidity + '%';
 };
+
+function changeUnits() {
+  switchCheckbox.checked ? getWeather(imperialUnits) : getWeather(metricUnits);
+}
 
 /***/ }),
 /* 99 */
