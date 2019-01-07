@@ -1,0 +1,8 @@
+{
+  "presets": [
+    ["env", {
+      "useBuiltIns": true,
+      "targets": ["ie >= 11"]
+    }]
+  ]
+}

@@ -5,18 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>WeatherApp</title>
+    <link rel="stylesheet" href="./dist/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
 <body>
-  <form>
+  <form autocomplete="off">
     <input type="text" placeholder="Enter City Name" id="search-txt">
-    <input type="button" id="search-btn" value="Submit">
+    <input type="button" id="search-btn" value="&#xf002" class="fas fa-search">
   </form>
-    <div id="weather">
-      <h1 id="city"></h1>
-      <p id="desc"></p>
-      <p id="temp"></p>
-      <p id="wind"></p>
+    <div id="weather-box" class="weather-box">
+      <div class="row"> 
+        <h2 id="weather-name" class="vertical-weather-boxes"></h2>
+        <p id="weather-description" class="vertical-weather-boxes"></p>
+        <h1 id="weather-temp" class="vertical-weather-boxes"></h1>
+        <div id="weather-icon" class="vertical-weather-boxes">
+          <img id="icon">
+        </div>
+      </div>
+      <div class="column">
+        <div class="horizontal-weather-boxes"><i class="fas fa-wind"></i><p id="weather-wind" ></p></div>
+        <div class="horizontal-weather-boxes"><i class="fas fa-tint"></i><p id="weather-humidity" ></p></div>
+        <div class="horizontal-weather-boxes"><i class="fas fa-tachometer-alt"></i><p id="weather-pressure" ></p></div>
+      </div>
+      <div class="units-switch">
+        <p>C°</p>
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
+        <p>F°</p>
+      </div>
     </div>
-    <script src="index.js"></script> 
+    <script src="dist/app.bundle.js"></script> 
 </body>
 </html>

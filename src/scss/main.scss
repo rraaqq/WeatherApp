@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import 'reset';
+@import 'input';
+@import 'switch';
+
+$day: linear-gradient(to right bottom, #47aab8, #50b2c0, #58bbc8, #61c3d1, #69ccd9);
+$night: linear-gradient(to right bottom, #383d50, #3e4558, #444d61, #4a5569, #505d72);
+$background-day: #58bbc9;
+$background-night: #494E60;
+
+body {
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    background: $background-day;
+    .weather-box {
+        height: 70vh;
+        width: 400px;
+        display: flex;
+        background: $day;
+        flex-direction: column;
+        margin: 50px auto;
+        color: #fff;
+        text-align: center;
+        box-shadow: 0px 13px 20px 3px rgba(0,0,0,0.5);
+        .horizontal-weather-boxes {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            border-right: 2px solid #fff;
+            p {
+                margin-top: 5px;
+            }
+            &:last-of-type {
+                border: none;
+            }
+        }
+        h1 {
+            font-size: 50px;
+        }
+        .units-switch {
+            height: 40px;
+            margin: 20px auto;
+            display: flex;
+            p {
+                margin: 5px 10px;
+            }
+        }
+    }
+}
+
+// Flex layout
+.row {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.column {
+    display: flex;
+    width: 100%;
+    margin: 50px 0;
+}
+
+.night {
+    background-image: $night !important;
+}
+
+.night-baskgroud {
+    background: $background-night;
+}
