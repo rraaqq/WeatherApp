@@ -20,6 +20,10 @@ form {
     border-radius: 50px;
     border: 3px solid #fff;
     background-color: rgba(0, 0, 0, 0); }
+    @media (max-width: 600px) {
+      form input[type="text"] {
+        margin-top: 4vh;
+        height: 6vh; } }
     form input[type="text"]:-ms-input-placeholder {
       color: #fff;
       opacity: 1;
@@ -78,9 +82,9 @@ form {
 body {
   font-family: 'Roboto', sans-serif;
   height: 100vh;
-  background: #58bbc9; }
+  background-color: #58bbc9; }
   body .weather-box {
-    height: 70vh;
+    height: 600px;
     width: 400px;
     display: flex;
     background: linear-gradient(to right bottom, #47aab8, #50b2c0, #58bbc8, #61c3d1, #69ccd9);
@@ -89,9 +93,12 @@ body {
     color: #fff;
     text-align: center;
     box-shadow: 0px 13px 20px 3px rgba(0, 0, 0, 0.5); }
-    @media (max-width:   767px) {
+    @media (max-width: 600px) {
       body .weather-box {
-        width: 200px; } }
+        width: 100vw;
+        height: 90vh;
+        margin: 0;
+        box-shadow: none; } }
     body .weather-box .horizontal-weather-boxes {
       display: flex;
       flex: 1;
@@ -126,5 +133,9 @@ body {
 
 .night-baskgroud {
   background: #494E60; }
+
+@media only screen and (max-width:  767px) {
+  .weather-box {
+    width: 100%; } }
 
 /*# sourceMappingURL=style.css.map*/
